@@ -1,5 +1,5 @@
-#ifndef QMAINDIALOG_H
-#define QMAINDIALOG_H
+#ifndef QMAINDIALOG_OLD_H
+#define QMAINDIALOG_OLD_H
 
 #include "qconvertorworker.h"
 #include <QProcess>
@@ -7,16 +7,16 @@
 #include <QThread>
 
 namespace Ui {
-class QMainDialog;
+class QMainDialog_Old;
 }
 
-class QMainDialog : public QDialog
+class QMainDialog_Old : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit QMainDialog(QWidget *parent = 0);
-    ~QMainDialog();
+    explicit QMainDialog_Old(QWidget *parent = 0);
+    ~QMainDialog_Old();
 
 private slots:
     void on_toolButton_browse_clicked();
@@ -34,10 +34,10 @@ signals:
 
 private:
     void updateScanConvertButton();
-    Ui::QMainDialog *ui;
+    Ui::QMainDialog_Old *ui;
 
     QThread m_workerThread;
     QConvertorWorker *m_worker;
 };
 
-#endif // QMAINDIALOG_H
+#endif // QMAINDIALOG_OLD_H

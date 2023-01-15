@@ -1,5 +1,5 @@
-#include "qmaindialog.h"
-#include "ui_qmaindialog.h"
+#include "qmaindialog_old.h"
+#include "ui_qmaindialog_old.h"
 #include <QDomDocument>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -7,9 +7,9 @@
 #include <QDomNode>
 #include <QDir>
 
-QMainDialog::QMainDialog(QWidget *parent) :
+QMainDialog_Old::QMainDialog_Old(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::QMainDialog),
+    ui(new Ui::QMainDialog_Old),
     m_worker(NULL)
 {
     ui->setupUi(this);
@@ -20,7 +20,7 @@ QMainDialog::QMainDialog(QWidget *parent) :
     m_workerThread.start();
 }
 
-QMainDialog::~QMainDialog()
+QMainDialog_Old::~QMainDialog_Old()
 {
     if (m_worker)
     {
@@ -32,7 +32,7 @@ QMainDialog::~QMainDialog()
     delete ui;
 }
 
-void QMainDialog::on_toolButton_browse_clicked()
+void QMainDialog_Old::on_toolButton_browse_clicked()
 {
     const QString &dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"), "", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
@@ -42,7 +42,7 @@ void QMainDialog::on_toolButton_browse_clicked()
     }
 }
 
-void QMainDialog::on_lineEdit_URL_textChanged(const QString &arg1)
+void QMainDialog_Old::on_lineEdit_URL_textChanged(const QString &arg1)
 {
     if (arg1.isEmpty())
     {
@@ -58,7 +58,7 @@ void QMainDialog::on_lineEdit_URL_textChanged(const QString &arg1)
     }
 }
 
-void QMainDialog::on_lineEdit_DestPath_textChanged(const QString &arg1)
+void QMainDialog_Old::on_lineEdit_DestPath_textChanged(const QString &arg1)
 {
     QDir dir(arg1);
 
@@ -90,7 +90,7 @@ void QMainDialog::on_lineEdit_DestPath_textChanged(const QString &arg1)
     }
 }
 
-void QMainDialog::updateScanConvertButton()
+void QMainDialog_Old::updateScanConvertButton()
 {
     if ((ui->lineEdit_URL->styleSheet().isEmpty())&&(ui->lineEdit_DestPath->styleSheet().isEmpty()))
     {
@@ -102,7 +102,7 @@ void QMainDialog::updateScanConvertButton()
     }
 }
 
-void QMainDialog::on_pushButton_ScanConvert_clicked()
+void QMainDialog_Old::on_pushButton_ScanConvert_clicked()
 {
     if (ui->pushButton_ScanConvert->text() == "&Scan")
     {
@@ -156,7 +156,7 @@ void QMainDialog::on_pushButton_ScanConvert_clicked()
     }
 }
 
-void QMainDialog::process_finished(int exitCode, QProcess::ExitStatus exitStatus)
+void QMainDialog_Old::process_finished(int exitCode, QProcess::ExitStatus exitStatus)
 {
     QProcess *process = (QProcess *)sender();
 
@@ -229,7 +229,7 @@ void QMainDialog::process_finished(int exitCode, QProcess::ExitStatus exitStatus
     ui->pushButton_ScanConvert->setEnabled(true);
 }
 
-void QMainDialog::process_error(QProcess::ProcessError error)
+void QMainDialog_Old::process_error(QProcess::ProcessError error)
 {
     QProcess *process = (QProcess *)sender();
     QString errorStr;
@@ -263,17 +263,17 @@ void QMainDialog::process_error(QProcess::ProcessError error)
     ui->pushButton_ScanConvert->setEnabled(true);
 }
 
-void QMainDialog::worker_startRevision(QString revision)
+void QMainDialog_Old::worker_startRevision(QString revision)
 {
     ui->plainTextEdit->appendPlainText("[" + revision + "]");
 }
 
-void QMainDialog::worker_progressText(QString text)
+void QMainDialog_Old::worker_progressText(QString text)
 {
     ui->plainTextEdit->appendPlainText(text);
 }
 
-void QMainDialog::worker_finish()
+void QMainDialog_Old::worker_finish()
 {
     ui->plainTextEdit->appendPlainText("----------------------");
     ui->plainTextEdit->appendPlainText(tr("Finished!"));

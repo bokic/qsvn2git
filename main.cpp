@@ -1,4 +1,4 @@
-#include "qmaindialog.h"
+#include "qmaindialog_old.h"
 #include <QApplication>
 #include <QMetaType>
 
@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     registerTypes();
 
     QApplication a(argc, argv);
-    QMainDialog w;
+    QMainDialog_Old w;
     w.show();
 
     return a.exec();

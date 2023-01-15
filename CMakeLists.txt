@@ -20,9 +20,9 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Xml)
 
 add_executable(qsvn2git
     main.cpp
-    qmaindialog.cpp
-    qmaindialog.h
-    qmaindialog.ui
+    qmaindialog_old.cpp
+    qmaindialog_old.h
+    qmaindialog_old.ui
     qconvertorworker.cpp
     qconvertorworker.h
 )
