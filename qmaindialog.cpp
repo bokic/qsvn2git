@@ -14,6 +14,7 @@ QMainDialog::QMainDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->tableWidget_Revisions->horizontalHeader()->setStretchLastSection(true);
     ui->tableWidget_Users->horizontalHeader()->setStretchLastSection(true);
 
     m_workerThread.start();
