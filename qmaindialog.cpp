@@ -61,6 +61,8 @@ void QMainDialog::on_lineEdit_DestPath_textChanged(const QString &arg1)
 {
     QDir dir(arg1);
 
+    dir.setFilter(QDir::NoDotAndDotDot);
+
     if (arg1.isEmpty())
     {
         ui->lineEdit_DestPath->setStyleSheet("background: red");
@@ -73,7 +75,7 @@ void QMainDialog::on_lineEdit_DestPath_textChanged(const QString &arg1)
         ui->lineEdit_DestPath->setToolTip(tr("Dir do not exist."));
         ui->pushButton_ScanConvert->setEnabled(false);
     }
-    else if (dir.entryList().count() > 2) // '.' '..' are standard
+    else if (dir.entryList().isEmpty())
     {
         ui->lineEdit_DestPath->setStyleSheet("background: red");
         ui->lineEdit_DestPath->setToolTip(tr("Dir is not empty."));
