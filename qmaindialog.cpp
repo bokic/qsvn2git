@@ -218,6 +218,8 @@ void QMainDialog::process_finished(int exitCode, QProcess::ExitStatus exitStatus
         {
             QByteArray errorText = process->readAllStandardError();
             QMessageBox::critical(this, tr("Error"), tr("svn process terminated with exit code: %1.\n Error text: %2").arg(exitCode).arg(errorText));
+
+            ui->pushButton_ScanConvert->setText(tr("&Convert"));
         }
     }
 
