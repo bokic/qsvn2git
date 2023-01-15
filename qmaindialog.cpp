@@ -277,4 +277,7 @@ void QMainDialog::worker_finish()
 {
     ui->plainTextEdit->appendPlainText("----------------------");
     ui->plainTextEdit->appendPlainText(tr("Finished!"));
+
+    ui->pushButton_ScanConvert->setText(tr("&Done"));
+    ui->pushButton_ScanConvert->setEnabled(false);
 }
