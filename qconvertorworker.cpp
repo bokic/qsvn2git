@@ -228,7 +228,7 @@ void QConvertorWorker::convert(QString url, QString destPath, QStringList revisi
 
                 if (commitProc.exitCode())
                 {
-                    emit progressText(tr("Error: File git commit exit code(%1), stdout:%2.").arg(commitProc.exitCode()).arg(QString::fromUtf8(commitProc.readAll())));
+                    emit progressText(tr("Error: File git commit exit code(%1), stdout:%2.").arg(commitProc.exitCode()).arg(QString::fromUtf8(commitProc.readAllStandardError())));
 
                     return;
                 }
