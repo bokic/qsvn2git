@@ -476,7 +476,7 @@ QString QConvertorWorker::encodeForStdIn(const QString &text)
 {
     QString ret;
 
-    for(int c = 0; c < text.count(); c++)
+    for(int c = 0; c < text.length(); c++)
     {
         QChar ch = text.at(c);
 
